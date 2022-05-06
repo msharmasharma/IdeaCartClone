@@ -1,5 +1,5 @@
 import { useState } from "react";
-export const Input = () => {
+export const Input = ({getText}) => {
   const [text, setText] = useState("");
   const handleChange = (e) => {
     setText(e.target.value);
@@ -10,6 +10,7 @@ export const Input = () => {
       <input type="text" placeholder="Search" onChange={handleChange}></input>
       <button
         onClick={() => {
+          getText(text)
         }}
       >
         Search
