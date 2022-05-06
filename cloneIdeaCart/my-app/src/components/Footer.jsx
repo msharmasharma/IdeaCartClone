@@ -8,15 +8,15 @@ export const Footer = ()=>{
     grid-template-rows: repeat(1);
     margin-top: 4%;
     text-align: left;
-    margin-left: 60%;
+    margin-left: 10%;
     `
 
     return <FooterDiv>
         <p>Get To Know Us</p>
-        <Link to="/about"><li>About</li></Link>
-        <Link to="/contact"><li>Contact</li></Link>
-        <Link to="/privacy"><li>Privacy Policy</li></Link>
-        <Link to="/return"><li>Return Policy</li></Link>
-        <Link to="/earn"><li>Earn Money Online</li></Link>
+        <Link style={{textDecoration:"none"}} to="/about"><li>About</li></Link>
+        <Link style={{textDecoration:"none"}} to="/contact"><li>Contact</li></Link>
+        <Link style={{textDecoration:"none"}} to="/privacy"><li>Privacy Policy</li></Link>
+        <Link style={{textDecoration:"none"}} to="/return"><li>Return Policy</li></Link>
+        <Link style={{textDecoration:"none"}} to="/earn"><li>Earn Money Online</li></Link>
     </FooterDiv>
 }

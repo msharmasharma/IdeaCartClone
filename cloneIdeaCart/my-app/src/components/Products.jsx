@@ -28,11 +28,11 @@ export const Products = () => {
   `;
 
   return (
-    <div>
+    <div style={{marginBottom:"50%"}}>
       <P>Top Reads</P>
       <Layout>
         {products.map((pro) => (
-          <Link key={pro.id} to={`/products/${pro.id}`}>
+          <Link style={{textDecoration:"none"}} key={pro.id} to={`/products/${pro.id}`}>
             <div
               style={{
                 border: "1px solid grey",
