@@ -10,6 +10,7 @@ import { SignUp } from "./components/SignUp";
 import { Products } from "./components/Products";
 import { ShowBooks } from "./components/ShowBooks";
 import { Input } from "./components/Input";
+import { Footer } from "./components/Footer";
 function App() {
   return (
     <div className="App">
@@ -25,6 +26,7 @@ function App() {
         <Route path="/showbooks" element={<ShowBooks/>}></Route>
         <Route path="/input" element={<Input/>}></Route>
       </Routes>
+      <Footer/>
     </div>
   );
 }
