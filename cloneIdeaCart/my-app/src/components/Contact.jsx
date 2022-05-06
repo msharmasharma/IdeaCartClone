@@ -1,22 +1,28 @@
+import styled from "styled-components";
 export const Contact = () => {
+  const Main = styled.div`
+  display: grid;
+  grid-template-columns: repeat(2,40%);
+  margin-top: 5%;
+  row-gap: 10%;
+  margin-left: 13%;
+  `
   return (
     <div>
-      <h1>Contact</h1>
-      <div>
-        <div>Message me</div>
-
+     
         <form
-          action="https://formcarry.com/s/0GXbSX9DT7N"
+          action="https://formcarry.com/s/-1oBIfFBS0t"
           method="POST"
           accept-charset="UTF-8"
         >
-          <div>
+           <Main>
             <div>
               <input
                 type="text"
                 name="firstName"
                 placeholder="First Name"
                 required
+                style={{width:"300px",height:"30px"}}
               />
             </div>
             <div>
@@ -25,24 +31,24 @@ export const Contact = () => {
                 name="lastName"
                 placeholder="Last Name"
                 required
+                style={{width:"300px",height:"30px"}}
               />
-            </div>
           </div>
           <div>
-            <input type="number" name="number" placeholder="Number" required />
+            <input type="number" name="number" placeholder="Number" required style={{width:"300px",height:"30px"}}/>
           </div>
           <div>
-            <div>
+           
               <input
                 type="email"
                 name="email"
                 placeholder="Email Address"
                 required
+                style={{width:"300px",height:"30px"}}
               />
-            </div>
           </div>
           <div>
-            <input type="text" name="subject" placeholder="Subject" required />
+            <input type="text" name="subject" placeholder="Subject" required style={{width:"300px",height:"30px"}} />
           </div>
           <div>
             <textarea
@@ -52,13 +58,15 @@ export const Contact = () => {
               name="message"
               placeholder="Message..."
               required
+              style={{width:"300px",height:"30px"}}
             ></textarea>
           </div>
           <div>
-            <button type="submit">Send message</button>
+            <button type="submit" style={{width:"300px",height:"40px",marginLeft:"68%",marginTop:"10%"}}>Send message</button>
           </div>
+          </Main>
         </form>
-      </div>
+      
     </div>
   );
 };
