@@ -5,12 +5,13 @@ import styled from "styled-components";
 export const Products = () => {
   const [products, setProducts] = useState([]);
 
-  useEffect(() => {
-    axios.get("https://ideakartitems.herokuapp.com").then(({ data }) => {
+useEffect(() => {
+    axios.get("https://ideakartitems.herokuapp.com/products").then(({ data }) => {
       setProducts(data);
     });
   }, []);
 
+  
   const Layout = styled.div`
     display: grid;
     width: 90%;
@@ -87,6 +88,7 @@ export const Products = () => {
               </div>
             </div>
           </Link>
+       
         ))}
       </Layout>
     </div>

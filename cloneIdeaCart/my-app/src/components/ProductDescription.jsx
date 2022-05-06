@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { Link, Navigate, useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import axios from "axios";
 export const ProductDescription = () => {
@@ -52,12 +52,15 @@ export const ProductDescription = () => {
     });
   }, []);
 
-  //   useEffect(() => {
-  //     axios.get(`https://ideakartitems.herokuapp.com/1/${id}`).then(({ data }) => {
-  //       setShowData(data);
-  //     });
-  //   }, []);
-  // console.log(showData)
+  // useEffect(() => {
+  //   axios.get(`https://ideakartitems.herokuapp.com/products/${id}`).then(({ data }) => {
+  //     setShowData(data);
+  //   });
+  // }, []);
+
+  
+  console.log(showData);
+
   const handleClick = () => {
     window.location.href = `https://www.amazon.com/s?k=${showData.name}&crid=3UL1PKPVZJYBZ&sprefix=${showData.name}%2Caps%2C564&ref=nb_sb_noss_2`;
   };
