@@ -1,6 +1,4 @@
 import { useState } from "react";
-import styled from "styled-components";
-import { ShowBooks } from "./ShowBooks";
 export const Input = ({getText}) => {
   const [text, setText] = useState("");
   const handleChange = (e) => {
