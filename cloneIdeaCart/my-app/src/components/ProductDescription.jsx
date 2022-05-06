@@ -36,8 +36,11 @@ export const ProductDescription = () => {
         width: 100%;
         height: 60%;
         /* border: 1px solid red; */
-        background: #ebebeb;
         text-align: left;
+        height: auto;
+        border: 1px solid grey;
+        border-radius: 4px;
+        background-color: #ebebeb;
       }
     }
   `;
@@ -50,38 +53,87 @@ export const ProductDescription = () => {
   }, []);
 
   return (
-    <div>
-      <h1>Product Description</h1>
+    <div style={{ marginTop: "4%", marginBottom: "30%" }}>
       <Div>
         <div id="div1">
           <div id="imgDiv">
             <img
-              style={{ width: "92%", height: "93%",marginTop:"4%" }}
+              style={{ width: "92%", height: "93%", marginTop: "4%" }}
               src={showData.image_url}
               alt="Show Here"
             />
           </div>
           <div id="belowImg">
-            <p>Buy it at <b>best price</b> from here</p>
-            <h1>Rs. {showData.price} <button>Buy Now</button> </h1>
-            <h1>Book Specification</h1>
-            <hr/>
-            <p><b>Binding</b> &nbsp;   <span>Paperback Bunko</span></p>
-            <hr/>
-            <p><b>Language</b> &nbsp;   <span></span></p>
-            <hr/>
-            <p><b>Number Of Pages</b> &nbsp;   <span></span></p>
-            <hr/>
-            <p><b>Author</b> &nbsp;   <span></span></p>
-            <hr/>
-            <p><b>Publisher</b> &nbsp;   <span></span></p>
+            <p style={{ textAlign: "left" }}>
+              Buy it at <b>best price</b> from here
+            </p>
+            <h1 style={{ textAlign: "left" }}>
+              Rs. {showData.price} &ensp; &ensp; &ensp; &ensp; &ensp;
+              <button
+                style={{
+                  backgroundColor: "#f0ad4e",
+                  color: "white",
+                  borderColor: "#f0ad4e",
+                  width: "80px",
+                  height: "40px",
+                  border: "none",
+                  fontSize: "16px",
+                  paddingTop: "3%",
+                }}
+              >
+                Buy Now
+              </button>{" "}
+            </h1>
+            <h1 style={{ textAlign: "left" }}>Book Specification</h1>
+            <hr />
+            <p style={{ textAlign: "left" }}>
+              <b>Binding</b> &ensp; &ensp; &ensp; &ensp; &ensp; &ensp; &ensp;
+              &ensp; <span>Paperback Bunko</span>
+            </p>
+            <hr />
+            <p style={{ textAlign: "left" }}>
+              <b>Language</b> &ensp; &ensp; &ensp; &ensp; &ensp; &ensp; &ensp;{" "}
+              <span>Hindi/English</span>
+            </p>
+            <hr />
+            <p style={{ textAlign: "left" }}>
+              <b>Number Of Pages</b>
+            </p>
+            <hr />
+            <p style={{ textAlign: "left" }}>
+              <b>Author</b>
+            </p>
+            <hr />
+            <p style={{ textAlign: "left" }}>
+              <b>Publisher</b>
+            </p>
           </div>
         </div>
         <div id="div2">
           <h1>{showData.name}</h1>
           <div id="descri">
-            <h2>{showData.description1}</h2>
-            <p>{showData.description2}</p>
+            <h1 style={{ paddingLeft: "15px" }}>{showData.description1}</h1>
+            <p style={{ paddingLeft: "15px", paddingRight: "15px" }}>
+              {showData.description2}
+            </p>
+          </div>
+          <div style={{ marginTop: "5%" }}>
+            <div style={{ textAlign: "left" }}>
+              <span>Store</span> &ensp; &ensp; &ensp; &ensp; &ensp; &ensp;
+              &ensp;&ensp; &ensp; &ensp; &ensp; &ensp;&ensp; &ensp; &ensp;
+              &ensp; &ensp; &ensp; &ensp; &ensp; &ensp; &ensp; &ensp;&ensp; &ensp;&ensp;<span>Price</span> &ensp;
+              &ensp; &ensp; &ensp; &ensp; &ensp;&ensp;&ensp; &ensp; &ensp;
+              &ensp; &ensp;&ensp;&ensp; &ensp; &ensp; &ensp; &ensp;&ensp;&ensp;
+              &ensp;<span>Buy Now</span>
+            </div>
+            <hr />
+            <div style={{ textAlign: "left" ,  backgroundColor:"#ebebeb",height:"60px",marginTop:"-1%"}}>
+              <span>Amazon, Paperback Bunko </span> &ensp; &ensp; &ensp; &ensp;
+              &ensp; &ensp; &ensp;&ensp; &ensp; &ensp; &ensp; &ensp;&ensp; <span>{showData.price}</span> &ensp; &ensp;
+              &ensp; &ensp; &ensp; &ensp; &ensp;&ensp; &ensp; &ensp; &ensp;
+              &ensp;&ensp;&ensp; &ensp; &ensp; &ensp; &ensp;&ensp;&ensp; &ensp;
+              <button>Buy Now</button>
+            </div>
           </div>
         </div>
       </Div>
