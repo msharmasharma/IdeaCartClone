@@ -57,7 +57,7 @@ export const Navbar = () => {
           }}
           to="/"
         >
-          IDEACART
+          IDEAKART
         </Link>
 
         <Input />
