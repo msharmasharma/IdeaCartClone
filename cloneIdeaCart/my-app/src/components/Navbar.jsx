@@ -1,5 +1,8 @@
+import { useState } from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
+import { Input } from "./Input";
+
 export const Navbar = () => {
   const Nav = styled.div`
     display: flex;
@@ -16,7 +19,6 @@ export const Navbar = () => {
       margin-top: 8px;
       border-radius: 3px;
       border: none;
-      margin-right: 0%;
       padding-left: 15px;
       margin-left: 1.2%;
     }
@@ -25,7 +27,7 @@ export const Navbar = () => {
       width: 60px;
       height: 34px;
       margin-top: 8px;
-      margin-left: -2.3%;
+      margin-left: -.5%;
       background-color: white;
       border: none;
       border-left: 1px solid black;
@@ -35,6 +37,13 @@ export const Navbar = () => {
       }
     }
   `;
+
+  const [inValue, setInValue] = useState("");
+  console.log(inValue);
+
+  const handleClick = () => {
+    alert("hello");
+  };
   return (
     <div>
       <Nav>
@@ -50,8 +59,9 @@ export const Navbar = () => {
         >
           IDEACART
         </Link>
-        <input placeholder="Search"></input>
-        <button>Search</button>
+
+        <Input />
+
         <Link
           style={{
             color: "white",

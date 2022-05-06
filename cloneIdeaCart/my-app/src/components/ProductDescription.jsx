@@ -19,7 +19,8 @@ export const ProductDescription = () => {
       #imgDiv {
         width: 100%;
         height: 70%;
-        /* border: 1px solid black; */
+        border: 1px solid grey;
+        border-radius: 5px;
       }
       #belowImg {
         width: 100%;
@@ -47,7 +48,7 @@ export const ProductDescription = () => {
       setShowData(data);
     });
   }, []);
-  console.log(showData);
+
   return (
     <div>
       <h1>Product Description</h1>
@@ -55,7 +56,7 @@ export const ProductDescription = () => {
         <div id="div1">
           <div id="imgDiv">
             <img
-              style={{ width: "100%", height: "100%" }}
+              style={{ width: "92%", height: "93%",marginTop:"4%" }}
               src={showData.image_url}
               alt="Show Here"
             />
@@ -63,6 +64,17 @@ export const ProductDescription = () => {
           <div id="belowImg">
             <p>Buy it at <b>best price</b> from here</p>
             <h1>Rs. {showData.price} <button>Buy Now</button> </h1>
+            <h1>Book Specification</h1>
+            <hr/>
+            <p><b>Binding</b> &nbsp;   <span>Paperback Bunko</span></p>
+            <hr/>
+            <p><b>Language</b> &nbsp;   <span></span></p>
+            <hr/>
+            <p><b>Number Of Pages</b> &nbsp;   <span></span></p>
+            <hr/>
+            <p><b>Author</b> &nbsp;   <span></span></p>
+            <hr/>
+            <p><b>Publisher</b> &nbsp;   <span></span></p>
           </div>
         </div>
         <div id="div2">
