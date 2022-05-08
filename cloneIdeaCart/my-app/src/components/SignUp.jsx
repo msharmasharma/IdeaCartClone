@@ -72,7 +72,7 @@ export const SignUp = ()=>{
             paddingTop: "6px",
           }} className="button signup" onClick={register} >Sign up</div>
                     <br/>
-                    <div style={{ color: "blue" }} className="button log" onClick={() => history("/")}>Login</div>
+                    <div style={{ color: "blue" }} className="button log" onClick={() => history("/SignIn")}>Login</div>
     
                    
                 </div>
