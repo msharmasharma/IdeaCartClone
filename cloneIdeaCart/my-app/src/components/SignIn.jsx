@@ -32,11 +32,6 @@ export const SignIn = () => {
       }
     });
   };
-  const SignUpDiv = styled.div`
-    display: grid;
-    grid-template-columns: repeat(1, 1fr);
-    row-gap: 10%;
-  `;
 
   return (
     <div
@@ -44,7 +39,7 @@ export const SignIn = () => {
       className="login"
     >
       <h2 style={{ fontSize: "30px" }}>Log in</h2>
-      <SignUpDiv className="divone">
+      <div className="divone">
         <div className="labell">
           <label style={{ fontSize: "25px" }} htmlFor="">
             Email
@@ -76,9 +71,11 @@ export const SignIn = () => {
         <div>
           <span>
             <input type="checkbox"></input>
+            <br/>
           </span>
           Remember me
         </div>
+        <br/>
         <div
           style={{
             border: "1px solid green",
@@ -95,7 +92,7 @@ export const SignIn = () => {
         >
           Log in
         </div>
-
+        <br/>
         <div
           style={{ color: "blue" }}
           className="button registerr"
@@ -106,7 +103,7 @@ export const SignIn = () => {
         <div style={{ color: "blue" }} className="button registerr">
           Forgot your Password?
         </div>
-      </SignUpDiv>
+      </div>
     </div>
   );
 };

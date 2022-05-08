@@ -39,14 +39,11 @@ export const SignUp = ()=>{
             }
             
         }
-        const SignDiv = styled.div`
-            text-align: left;
-            margin-left: 10%;
-        `
+      
     
         return (
             <div className="register">
-                <SignDiv className="divone">
+                <div style={{textAlign:"left",marginLeft:"10%"}} className="divone">
                 <h4 style={{ fontSize: "30px" }}>Sign up</h4>
                     {console.log("User", user)}
                     <div className="label">
@@ -78,7 +75,7 @@ export const SignUp = ()=>{
                     <div style={{ color: "blue" }} className="button log" onClick={() => history("/")}>Login</div>
     
                    
-                </SignDiv>
+                </div>
     
                 
                 
