@@ -24,7 +24,6 @@ SnapShots
 - [Jyotiranjan Das](https://github.com/jyotiranjan98)
 - [Madhusudan Sharma](https://github.com/msharmasharma)
 - [Roshan Arikar ](https://github.com/roshanarikar)
-- [Sharan M](https://github.com/sharan96632)
 
 
 
