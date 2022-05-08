@@ -2,6 +2,7 @@ import React, { useState } from "react"
 // import "./register.css"
 import axios from "axios"
 import { useNavigate } from "react-router-dom"
+import styled from "styled-components"
 
 export const SignUp = ()=>{
    
@@ -38,32 +39,46 @@ export const SignUp = ()=>{
             }
             
         }
+        const SignDiv = styled.div`
+            text-align: left;
+            margin-left: 10%;
+        `
     
         return (
             <div className="register">
-                <div className="divone">
-                <h4>Sign up</h4>
+                <SignDiv className="divone">
+                <h4 style={{ fontSize: "30px" }}>Sign up</h4>
                     {console.log("User", user)}
                     <div className="label">
-                        <label className="label" >Name</label>
-                        <input type="text" name="name" value={user.name} onChange={handleChange}></input>
-                        <label className="label" >Mobile Number</label>
-                        <input type="text" name="mobile" value={user.mobile} onChange={handleChange}></input>
-                        <label className="label" htmlFor="">Email address</label>
-                        <input type="text" name="email" value={user.email}  onChange={ handleChange }></input>
-                        <label className="label" htmlFor="">Password</label>
-                        <input type="password" name="password" value={user.password}  onChange={ handleChange }></input>
-                        <label className="label" htmlFor="">Password Confirmation</label>
-                        <input type="password" name="rePassword" value={user.rePassword}  onChange={ handleChange }></input>
+                        <label style={{ fontSize: "25px" }} className="label" >Name</label><br/>
+                        <input  style={{ width: "60%", height: "30px" }} type="text" name="name" value={user.name} onChange={handleChange}></input><br/><br/>
+                        <label style={{ fontSize: "25px" }} className="label" >Mobile Number</label><br/>
+                        <input  style={{ width: "60%", height: "30px" }} type="text" name="mobile" value={user.mobile} onChange={handleChange}></input><br/><br/>
+                        <label style={{ fontSize: "25px" }} className="label" htmlFor="">Email address</label><br/>
+                        <input  style={{ width: "60%", height: "30px" }} type="text" name="email" value={user.email}  onChange={ handleChange }></input><br/><br/>
+                        <label style={{ fontSize: "25px" }} className="label" htmlFor="">Password</label><br/>
+                        <input  style={{ width: "60%", height: "30px" }} type="password" name="password" value={user.password}  onChange={ handleChange }></input><br/><br/>
+                        <label style={{ fontSize: "25px" }} className="label" htmlFor="">Password Confirmation</label><br/>
+                        <input  style={{ width: "60%", height: "30px" }} type="password" name="rePassword" value={user.rePassword}  onChange={ handleChange }></input>
                     </div>
                     <div className="ticbox" style={{display : "flex"}}>
                     </div>
-                    <div className="button signup" onClick={register} >Sign up</div>
-                    
-                    <div className="button log" onClick={() => history("/")}>Login</div>
+                    <br/>
+                    <div  style={{
+            border: "1px solid green",
+            width: "60px",
+            backgroundColor: "green",
+            color: "white",
+            textAlign: "center",
+            height: "30px",
+            borderRadius: "3px",
+            paddingTop: "6px",
+          }} className="button signup" onClick={register} >Sign up</div>
+                    <br/>
+                    <div style={{ color: "blue" }} className="button log" onClick={() => history("/")}>Login</div>
     
                    
-                </div>
+                </SignDiv>
     
                 
                 
