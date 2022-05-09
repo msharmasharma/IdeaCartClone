@@ -26,7 +26,6 @@ SnapShots
 - [Roshan Arikar ](https://github.com/roshanarikar)
 
 
-
 ## Tech Stack
 
 **Client:** HTML, CSS, JavaScript, React, Redux
