@@ -38,5 +38,5 @@ SnapShots
 
 Github repo link:-  https://github.com/msharmasharma/IdeaCartClone
 
-Deployed Link:-  
+Deployed Link:-  https://ideakart-clone.netlify.app/
 
