@@ -9,7 +9,7 @@ Ideakart is a site that gives u an idea and a platform for the book you want. We
 We have a user friendly search engine and a quick delivery system. With this we even provide best discounts on our books. You can write to us for any idea or any help you need.
 
 
-SnapShots
+SnapShots:
 
 ![Photo](https://github.com/roshanarikar/IdeaCartClone/blob/main/cloneIdeaCart/my-app/src/components/Readme%20data/snap1.png?raw=true)
 ![Photo](https://github.com/roshanarikar/IdeaCartClone/blob/main/cloneIdeaCart/my-app/src/components/Readme%20data/snap2.png?raw=true)
@@ -26,7 +26,7 @@ SnapShots
 - [Roshan Arikar ](https://github.com/roshanarikar)
 
 
-## Tech Stack
+## TechStacks
 
 **Client:** HTML, CSS, JavaScript, React, Redux
 
