@@ -11,6 +11,7 @@ export const SignIn = () => {
     password: "",
   });
 
+
   const handleChange = (e) => {
     const { name, value } = e.target;
     setUser({
@@ -18,7 +19,7 @@ export const SignIn = () => {
       [name]: value,
     });
   };
-
+//user login
   const login = () => {
     axios.post("http://localhost:8080/login", user).then((res) => {
       alert(res.data.message);
@@ -32,6 +33,7 @@ export const SignIn = () => {
       }
     });
   };
+
 
   return (
     <div
