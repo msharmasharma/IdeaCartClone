@@ -32,6 +32,13 @@ SnapShots:
 
 **Server:** NodeJS, Express, MongoDB
 
+## Features ✨
+
+1. User can register in web platform.
+2. User can see huge collection of books in diverse categories.
+3. User can check the description of the books.
+4. User can buy from amazon redirected by our website.
+
 
 ## Demo
 
