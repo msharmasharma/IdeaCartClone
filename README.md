@@ -39,3 +39,5 @@ Github repo link:-  https://github.com/msharmasharma/IdeaCartClone
 
 Deployed Link:-  https://ideakart-clone.netlify.app/
 
+## Check out Blog🎥
+
