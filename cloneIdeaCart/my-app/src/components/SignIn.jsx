@@ -1,110 +1,142 @@
-import React, { useState } from "react";
-import styled from "styled-components";
+import { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-
+import { useSelector, useDispatch } from "react-redux";
+import { setUser } from "../redux/action";
 export const SignIn = () => {
-  const history = useNavigate();
+  const user = useSelector((store) => store.user);
+  console.log(user);
 
-  const [user, setUser] = useState({
-    email: "",
+  const dispatch = useDispatch();
+
+  const navigate = useNavigate();
+
+  const [adminLogin, setAdminLogin] = useState({
     password: "",
+    username: "",
   });
 
-
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setUser({
-      ...user,
-      [name]: value,
-    });
-  };
-//user login
-  const login = () => {
-    axios.post("http://localhost:8080/login", user).then((res) => {
-      alert(res.data.message);
-      // setLoginUser(res.data.user)
-      console.log(res.data.user);
-      console.log(res.data.message);
-      if (res.data.message === "Login Successfull") {
-        history("/products");
-      } else {
-        history("/SignIn");
-      }
-    });
+  const takeLogin = (event) => {
+    const { id, value } = event.target;
+    setAdminLogin({ ...adminLogin, [id]: value });
   };
 
+  const loginAdmin = (event) => {
+    event.preventDefault();
+    axios
+      .post("https://masai-api-mocker.herokuapp.com/auth/login", adminLogin)
+      .then((res) => {
+        if (res.data.error == false) {
+          let username = adminLogin.username;
+          let token = res.data.token;
+
+          axios
+            .get(`https://masai-api-mocker.herokuapp.com/user/${username}`, {
+              headers: {
+                "Content-type": "application/json",
+                Authorization: `Bearer ${token}`,
+              },
+            })
+            .then((res) => {
+              localStorage.setItem(
+                "teacherName",
+                JSON.stringify(res.data.name)
+              );
+            })
+            .then(() => alert("Login Successful"))
+            .then(() => {
+              dispatch(setUser(true));
+            })
+            .then(() => navigate("/products"));
+        } else {
+          alert("wrong username or password");
+        }
+      });
+  };
 
   return (
-    <div
-      style={{ marginLeft: "10%", textAlign: "left", marginBottom: "10%" }}
-      className="login"
-    >
-      <h2 style={{ fontSize: "30px" }}>Log in</h2>
-      <div className="divone">
-        <div className="labell">
-          <label style={{ fontSize: "25px" }} htmlFor="">
-            Email
+    <div>
+      <h1 style={{ marginLeft: "-73.5%" }}>Log in</h1>
+      <div style={{ width: "50%", marginLeft: "10%" }}>
+        <form
+          onSubmit={loginAdmin}
+          style={{ display: "flex", flexDirection: "column", gap: "20px" }}
+        >
+          <label
+            style={{
+              marginLeft: "-84%",
+              marginBottom: "-15px",
+              fontSize: "25px",
+            }}
+          >
+            Username
           </label>
-          &ensp;
-          <br />
           <input
-            style={{ width: "60%", height: "30px" }}
+            id="username"
+            onChange={takeLogin}
             type="text"
-            name="email"
-            value={user.email}
-            onChange={handleChange}
-          ></input>
-          <br />
-          <br />
-          <label style={{ fontSize: "25px" }} htmlFor="">
+            placeholder="enter username"
+            style={{
+              height: "35px",
+              border: "1px solid black",
+              marginTop: "0px",
+            }}
+          />
+          <label
+            style={{
+              marginLeft: "-84.5%",
+              marginBottom: "-15px",
+              fontSize: "25px",
+            }}
+          >
             Password
           </label>
-          &ensp;
-          <br />
           <input
-            style={{ width: "60%", height: "30px" }}
+            id="password"
+            onChange={takeLogin}
             type="password"
-            name="password"
-            value={user.password}
-            onChange={handleChange}
-          ></input>
-        </div>
-        <div>
-          <span>
-            <input type="checkbox"></input>
-            <br/>
-          </span>
-          Remember me
-        </div>
-        <br/>
-        <div
-          style={{
-            border: "1px solid green",
-            width: "60px",
-            backgroundColor: "green",
-            color: "white",
-            textAlign: "center",
-            height: "30px",
-            borderRadius: "3px",
-            paddingTop: "6px",
-          }}
-          className="button signin"
-          onClick={login}
-        >
-          Log in
-        </div>
-        <br/>
-        <div
-          style={{ color: "blue" }}
-          className="button registerr"
-          onClick={() => history("/SignIn")}
-        >
-          Sign up
-        </div>
-        <div style={{ color: "blue" }} className="button registerr">
-          Forgot your Password?
-        </div>
+            placeholder="enter password"
+            style={{ height: "35px", border: "1px solid black" }}
+          />
+          <div style={{ marginLeft: "-84%" }}>
+            <span>
+              <input
+                style={{ marginLeft: "-7%", cursor: "pointer" }}
+                type="checkbox"
+              ></input>
+              <br />
+            </span>
+            Remember me
+          </div>
+          <input
+            style={{
+              border: "1px solid green",
+              width: "60px",
+              backgroundColor: "green",
+              color: "white",
+              textAlign: "center",
+              borderRadius: "3px",
+              paddingTop: "4px",
+              cursor: "pointer",
+              height: "40px",
+              fontSize: "18px",
+            }}
+            type="submit"
+            value="Login"
+          />
+        </form>
+      </div>
+      <div
+        style={{
+          color: "blue",
+          marginLeft: "-75.8%",
+          marginTop: "20px",
+          cursor: "pointer",
+        }}
+        className="button registerr"
+        onClick={() => navigate("/signup")}
+      >
+        Sign up
       </div>
     </div>
   );

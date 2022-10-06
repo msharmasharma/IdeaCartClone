@@ -2,16 +2,23 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
+import { useSelector } from "react-redux";
 export const Products = () => {
+  const user = useSelector((store) => store.user);
+  console.log(user);
+
+  const teacher = JSON.parse(localStorage.getItem("teacherName"));
+
   const [products, setProducts] = useState([]);
 
-useEffect(() => {
-    axios.get("https://ideakartitems.herokuapp.com/products").then(({ data }) => {
-      setProducts(data);
-    });
+  useEffect(() => {
+    axios
+      .get("https://ideakartitems.herokuapp.com/products")
+      .then(({ data }) => {
+        setProducts(data);
+      });
   }, []);
 
-  
   const Layout = styled.div`
     display: grid;
     width: 90%;
@@ -28,13 +35,16 @@ useEffect(() => {
     font-family: "Roboto";
   `;
 
-
   return (
-    <div style={{marginBottom:"50%"}}>
+    <div style={{ marginBottom: "50%" }}>
       <P>Top Reads</P>
       <Layout>
         {products.map((pro) => (
-          <Link style={{textDecoration:"none"}} key={pro.id} to={`/products/${pro.id}`}>
+          <Link
+            style={{ textDecoration: "none" }}
+            key={pro.id}
+            to={`/products/${pro.id}`}
+          >
             <div
               style={{
                 border: "1px solid grey",
@@ -68,27 +78,26 @@ useEffect(() => {
                   Rs. {pro.price}
                 </p>
                 <hr style={{ width: "90%", color: "gray" }} />
-                <div style={{marginTop:"20px"}} >
-                <span style={{ color: "blue", marginRight: "5%" }}>
-                  <img
-                    src="https://img.icons8.com/material-rounded/344/shopping-cart-loaded.png"
-                    style={{ width: "15px", height: "15px" }}
-                  />{" "}
-                  View Now
-                </span>{" "}
-                |{" "}
-                <span style={{ color: "blue", marginLeft: "5%" }}>
-                  <img
-                    src="https://img.icons8.com/ios-filled/344/view-details.png"
-                    style={{ width: "15px", height: "15px" }}
-                  />{" "}
-                  More Details{" "}
-                </span>
+                <div style={{ marginTop: "20px" }}>
+                  <span style={{ color: "blue", marginRight: "5%" }}>
+                    <img
+                      src="https://img.icons8.com/material-rounded/344/shopping-cart-loaded.png"
+                      style={{ width: "15px", height: "15px" }}
+                    />{" "}
+                    View Now
+                  </span>{" "}
+                  |{" "}
+                  <span style={{ color: "blue", marginLeft: "5%" }}>
+                    <img
+                      src="https://img.icons8.com/ios-filled/344/view-details.png"
+                      style={{ width: "15px", height: "15px" }}
+                    />{" "}
+                    More Details{" "}
+                  </span>
                 </div>
               </div>
             </div>
           </Link>
-       
         ))}
       </Layout>
     </div>

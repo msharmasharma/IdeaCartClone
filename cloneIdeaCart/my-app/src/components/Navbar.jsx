@@ -2,8 +2,17 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { Input } from "./Input";
+import { useSelector, useDispatch } from "react-redux";
+import { setUser } from "../redux/action";
 
 export const Navbar = () => {
+  const user = useSelector((store) => store.user);
+  console.log(user);
+
+  const dispatch = useDispatch();
+
+  const teacher = JSON.parse(localStorage.getItem("teacherName"));
+
   const Nav = styled.div`
     display: flex;
     gap: 30px;
@@ -27,7 +36,7 @@ export const Navbar = () => {
       width: 60px;
       height: 34px;
       margin-top: 8px;
-      margin-left: -.5%;
+      margin-left: -0.5%;
       background-color: white;
       border: none;
       border-left: 1px solid black;
@@ -40,12 +49,16 @@ export const Navbar = () => {
 
   const [inValue, setInValue] = useState([]);
 
-  const showText = (value)=>{
-    setInValue(value)
-  }
-  console.log(inValue);
+  const showText = (value) => {
+    setInValue(value);
+  };
+  // console.log(inValue);
 
-
+  const logout = () => {
+    alert(`${teacher} logging out`);
+    localStorage.removeItem("teacherName");
+    dispatch(setUser(false));
+  };
 
   return (
     <div>
@@ -82,18 +95,50 @@ export const Navbar = () => {
         >
           Contact
         </Link>
-        <Link
-          style={{ color: "white", textDecoration: "none", marginTop: "15px" }}
-          to="/signin"
-        >
-          SignIn
-        </Link>
-        <Link
-          style={{ color: "white", textDecoration: "none", marginTop: "15px" }}
-          to="/signup"
-        >
-          SignUp
-        </Link>
+
+        {user === false ? (
+          <div style={{ display: "flex", gap: "20px" }}>
+            <Link
+              style={{
+                color: "white",
+                textDecoration: "none",
+                marginTop: "15px",
+              }}
+              to="/signin"
+            >
+              SignIn
+            </Link>
+
+            <Link
+              style={{
+                color: "white",
+                textDecoration: "none",
+                marginTop: "15px",
+              }}
+              to="/signup"
+            >
+              SignUp
+            </Link>
+          </div>
+        ) : (
+          <div style={{ display: "flex", gap: "20px" }}>
+            <p style={{ marginTop: "10px", color: "white" }}>
+              Welcome! <br />
+              {teacher}
+            </p>
+            <button
+              style={{
+                height: "20px",
+                borderRadius: "5px",
+                marginTop: "15px",
+                cursor: "pointer",
+              }}
+              onClick={logout}
+            >
+              Logout
+            </button>{" "}
+          </div>
+        )}
       </Nav>
     </div>
   );
