@@ -25,10 +25,14 @@ SnapShots:
 
 ## Features ✨
 
-1. User can register in web platform.
+1. User can signup , signin and signout.
 2. User can see huge collection of books in diverse categories.
-3. User can check the description of the books.
+3. User can check the description of the books only if the user is logged in.
 4. User can buy from amazon redirected by our website.
+5. User can search books.
+6. User can sort according to price.
+7. User can filter according to price.
+
 
 
 ## Demo
