@@ -7,6 +7,7 @@ export const Products = () => {
   const search = useSelector((store) => store.search);
   const input = useSelector((store) => store.input);
   const [pop, setPop] = useState(true);
+  const [filterValue, setFilterValue] = useState("");
   // console.log(input);
 
   const [products, setProducts] = useState([]);
@@ -53,6 +54,20 @@ export const Products = () => {
       setProducts(newData);
       setPop(true);
     }
+  };
+
+  const handleChange = (event) => {
+    setFilterValue(event.target.value);
+    let value1 = event.target.value;
+    let value2 = event.target.value * 2;
+    console.log("value1" + value1);
+    console.log("value2" + value2);
+    axios(
+      `https://ideakart-clone.herokuapp.com/products?price_gte=${value1}&price_lte=${value2}`,
+      {
+        method: "GET",
+      }
+    ).then((res) => setProducts(res.data));
   };
 
   const Layout = styled.div`
@@ -163,6 +178,28 @@ export const Products = () => {
                   ? "Sort By Price High to Low"
                   : "Sort By Price Low to High"}{" "}
               </button>
+            </div>
+            <div style={{ marginTop: "10px" }}>
+              <select
+                value={filterValue}
+                onChange={handleChange}
+                style={{
+                  width: "290px",
+                  cursour: "pointer",
+                  marginLeft: "-8.4%",
+                  marginTop: "2%",
+                  height: "40px",
+                }}
+              >
+                <option>Filter By Price</option>
+                <option value={40}>₹40-₹100</option>
+                <option value={100}>₹100-₹200</option>
+                <option value={250}>₹250-₹500</option>
+                <option value={500}>₹500-₹1000</option>
+                <option value={1000}>₹1000-₹2000</option>
+                <option value={2000}>₹2000-₹4000</option>
+                <option value={4000}>₹4000-₹8000</option>
+              </select>
             </div>
           </div>
           <Layout>

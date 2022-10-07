@@ -10,6 +10,7 @@ import { SignUp } from "./components/SignUp";
 import { Products } from "./components/Products";
 import { Input } from "./components/Input";
 import { Footer } from "./components/Footer";
+import { PrivateRouter } from "./components/PrivateRouter";
 function App() {
   return (
     <div className="App">
@@ -17,14 +18,22 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />}></Route>
         <Route path="/products" element={<Products />}></Route>
-        <Route path="/products/:id" element={<ProductDescription />}></Route>
+        <Route
+          path="/products/:id"
+          element={
+            <PrivateRouter>
+              {" "}
+              <ProductDescription />
+            </PrivateRouter>
+          }
+        ></Route>
         <Route path="/about" element={<About />}></Route>
         <Route path="/contact" element={<Contact />}></Route>
         <Route path="/signin" element={<SignIn />}></Route>
         <Route path="/signup" element={<SignUp />}></Route>
-        <Route path="/input" element={<Input/>}></Route>
+        <Route path="/input" element={<Input />}></Route>
       </Routes>
-      <Footer/>
+      <Footer />
     </div>
   );
 }

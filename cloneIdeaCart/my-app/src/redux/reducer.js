@@ -1,6 +1,6 @@
-import { SET_INPUT, SET_USER, SHOW_SEARCH } from "./action";
+import { SET_INPUT, SET_USER, SHOW_SEARCH, SET_AUTH } from "./action";
 
-const initState = { user: false, input: "", search: false };
+const initState = { user: false, input: "", search: false, isAuth: false };
 
 export const userReducer = (state = initState, { type, payload }) => {
   switch (type) {
@@ -18,6 +18,11 @@ export const userReducer = (state = initState, { type, payload }) => {
       return {
         ...state,
         search: payload,
+      };
+    case SET_AUTH:
+      return {
+        ...state,
+        isAuth: payload,
       };
     default:
       return state;

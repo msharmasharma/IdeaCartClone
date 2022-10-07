@@ -2,10 +2,10 @@ import { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
-import { setUser } from "../redux/action";
+import { setAuth, setUser } from "../redux/action";
 export const SignIn = () => {
   const user = useSelector((store) => store.user);
-  console.log(user);
+  // console.log(user);
 
   const dispatch = useDispatch();
 
@@ -29,7 +29,6 @@ export const SignIn = () => {
         if (res.data.error == false) {
           let username = adminLogin.username;
           let token = res.data.token;
-
           axios
             .get(`https://masai-api-mocker.herokuapp.com/user/${username}`, {
               headers: {
@@ -47,10 +46,12 @@ export const SignIn = () => {
             .then(() => {
               dispatch(setUser(true));
             })
-            .then(() => navigate("/products"));
-        } else {
-          alert("wrong username or password");
+            .then(() => navigate("/products"))
+            .then(() => dispatch(setAuth(true)));
         }
+      })
+      .catch(() => {
+        alert("wrong username or password");
       });
   };
 
