@@ -6,7 +6,8 @@ import { useSelector } from "react-redux";
 export const Products = () => {
   const search = useSelector((store) => store.search);
   const input = useSelector((store) => store.input);
-  console.log(input);
+  const [pop, setPop] = useState(true);
+  // console.log(input);
 
   const [products, setProducts] = useState([]);
   const [inputsearch, setInputSearch] = useState([]);
@@ -35,7 +36,24 @@ export const Products = () => {
       });
   };
 
-  console.log(inputsearch);
+  // console.log(inputsearch);
+
+  const handleSort = () => {
+    if (pop === true) {
+      let newData = products.sort((a, b) => {
+        return b.price - a.price;
+      });
+      setProducts(newData);
+      setPop(false);
+    }
+    if (pop === false) {
+      let newData = products.sort((a, b) => {
+        return a.price - b.price;
+      });
+      setProducts(newData);
+      setPop(true);
+    }
+  };
 
   const Layout = styled.div`
     display: grid;
@@ -137,8 +155,15 @@ export const Products = () => {
         </div>
       ) : (
         <div>
-          <div>
+          <div style={{ display: "flex", gap: "10%" }}>
             <P>Top Reads</P>
+            <div style={{ marginTop: "25px" }}>
+              <button style={{ cursor: "pointer" }} onClick={handleSort}>
+                {pop === true
+                  ? "Sort By Price High to Low"
+                  : "Sort By Price Low to High"}{" "}
+              </button>
+            </div>
           </div>
           <Layout>
             {products.map((pro) => (
