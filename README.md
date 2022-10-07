@@ -6,9 +6,17 @@ With this it even provides best discounts our books.
 
 SnapShots:
 
+![ideaLogged](https://user-images.githubusercontent.com/60216125/194518063-a8e9f51f-30b4-4669-bf3c-e2cfbea8a5c6.png)
+
+<br/>
+
 ![Photo](https://github.com/roshanarikar/IdeaCartClone/blob/main/cloneIdeaCart/my-app/src/components/Readme%20data/snap1.png?raw=true)
 
+<br/>
+
 ![Photo](https://github.com/roshanarikar/IdeaCartClone/blob/main/cloneIdeaCart/my-app/src/components/Readme%20data/snap2.png?raw=true)
+
+<br/>
 
 ![Photo](https://github.com/roshanarikar/IdeaCartClone/blob/main/cloneIdeaCart/my-app/src/components/Readme%20data/snap4.png?raw=true)
 
