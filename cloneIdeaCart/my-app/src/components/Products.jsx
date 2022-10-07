@@ -10,7 +10,6 @@ export const Products = () => {
 
   const [pop, setPop] = useState(true);
   const [filterValue, setFilterValue] = useState("");
-  // console.log(input);
   const navigate = useNavigate();
   const [products, setProducts] = useState([]);
   const [inputsearch, setInputSearch] = useState([]);
@@ -38,8 +37,6 @@ export const Products = () => {
         setInputSearch(data);
       });
   };
-
-  // console.log(inputsearch);
 
   const handleSort = () => {
     if (pop === true) {
