@@ -15,10 +15,7 @@ SnapShots:
 
 ## Authors
 
-- [Ritu Chauhan](https://github.com/architachauhan152)
-- [Jyotiranjan Das](https://github.com/jyotiranjan98)
 - [Madhusudan Sharma](https://github.com/msharmasharma)
-- [Roshan Arikar ](https://github.com/roshanarikar)
 
 
 ## TechStacks
@@ -39,7 +36,7 @@ SnapShots:
 
 Github repo link:-  https://github.com/msharmasharma/IdeaCartClone
 
-Deployed Link:-  https://ideakart-clone.netlify.app/
+Deployed Link:-  https://ideakart-clone-react-redux.netlify.app/
 
 ## Check out Blog🎥
 
