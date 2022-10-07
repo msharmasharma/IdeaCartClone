@@ -3,11 +3,12 @@ import { Link, useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import { Input } from "./Input";
 import { useSelector, useDispatch } from "react-redux";
-import { setUser, showSearch } from "../redux/action";
+import { setAuth, setUser, showSearch } from "../redux/action";
 
 export const Navbar = () => {
   const user = useSelector((store) => store.user);
   const search = useSelector((store) => store.search);
+  const isAuth = useSelector((store) => store.isAuth);
   // console.log(user);
 
   const dispatch = useDispatch();
@@ -53,6 +54,7 @@ export const Navbar = () => {
     alert(`${teacher} logging out`);
     localStorage.removeItem("teacherName");
     dispatch(setUser(false));
+    dispatch(setAuth(false));
   };
   const ideaKart = () => {
     navigate("/products");

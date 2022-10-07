@@ -1,15 +1,17 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import { useSelector } from "react-redux";
 export const Products = () => {
   const search = useSelector((store) => store.search);
   const input = useSelector((store) => store.input);
+  const isAuth = useSelector((store) => store.isAuth);
+
   const [pop, setPop] = useState(true);
   const [filterValue, setFilterValue] = useState("");
   // console.log(input);
-
+  const navigate = useNavigate();
   const [products, setProducts] = useState([]);
   const [inputsearch, setInputSearch] = useState([]);
 
@@ -105,7 +107,7 @@ export const Products = () => {
                 <Link
                   style={{ textDecoration: "none" }}
                   key={pro.id}
-                  to={`/products/${pro.id}`}
+                  to={isAuth ? `/products/${pro.id}` : "/signin"}
                 >
                   <div
                     style={{
@@ -207,7 +209,7 @@ export const Products = () => {
               <Link
                 style={{ textDecoration: "none" }}
                 key={pro.id}
-                to={`/products/${pro.id}`}
+                to={isAuth ? `/products/${pro.id}` : "/signin"}
               >
                 <div
                   style={{
