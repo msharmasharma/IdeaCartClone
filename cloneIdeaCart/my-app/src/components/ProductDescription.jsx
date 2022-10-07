@@ -49,7 +49,7 @@ export const ProductDescription = () => {
 
   useEffect(() => {
     axios
-      .get(`https://ideakartitems.herokuapp.com/products/${id}`)
+      .get(`https://ideakart-clone.herokuapp.com/products/${id}`)
       .then(({ data }) => {
         setShowData(data);
       });
@@ -86,6 +86,7 @@ export const ProductDescription = () => {
                   border: "none",
                   fontSize: "16px",
                   paddingTop: "3%",
+                  cursor: "pointer",
                 }}
                 onClick={handleClick}
               >
@@ -132,7 +133,8 @@ export const ProductDescription = () => {
               &ensp; &ensp; &ensp; &ensp; &ensp; &ensp; &ensp; &ensp;&ensp;
               &ensp;&ensp;<span>Price</span> &ensp; &ensp; &ensp; &ensp; &ensp;
               &ensp;&ensp;&ensp; &ensp; &ensp; &ensp; &ensp;&ensp;&ensp; &ensp;
-              &ensp; &ensp; &ensp;&ensp;&ensp; &ensp;<span>Buy Now</span>
+              &ensp; &ensp; &ensp;&ensp;&ensp; &ensp;
+              <span>Buy Now</span>
             </div>
             <hr />
             <div
@@ -148,7 +150,7 @@ export const ProductDescription = () => {
               <span>{showData.price}</span> &ensp; &ensp; &ensp; &ensp; &ensp;
               &ensp; &ensp;&ensp; &ensp; &ensp; &ensp; &ensp;&ensp;&ensp; &ensp;
               &ensp; &ensp; &ensp;&ensp;&ensp; &ensp;
-              <button onClick={handleClick}>Buy Now</button>
+              <button  style={{ cursor: "pointer" }} onClick={handleClick}>Buy Now</button>
             </div>
           </div>
         </div>

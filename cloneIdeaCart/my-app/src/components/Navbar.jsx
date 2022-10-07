@@ -1,15 +1,17 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import { Input } from "./Input";
 import { useSelector, useDispatch } from "react-redux";
-import { setUser } from "../redux/action";
+import { setUser, showSearch } from "../redux/action";
 
 export const Navbar = () => {
   const user = useSelector((store) => store.user);
-  console.log(user);
+  const search = useSelector((store) => store.search);
+  // console.log(user);
 
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const teacher = JSON.parse(localStorage.getItem("teacherName"));
 
@@ -47,23 +49,21 @@ export const Navbar = () => {
     }
   `;
 
-  const [inValue, setInValue] = useState([]);
-
-  const showText = (value) => {
-    setInValue(value);
-  };
-  // console.log(inValue);
-
   const logout = () => {
     alert(`${teacher} logging out`);
     localStorage.removeItem("teacherName");
     dispatch(setUser(false));
+  };
+  const ideaKart = () => {
+    navigate("/products");
+    dispatch(showSearch(false));
   };
 
   return (
     <div>
       <Nav>
         <Link
+          onClick={ideaKart}
           style={{
             color: "yellow",
             textDecoration: "none",
@@ -76,7 +76,7 @@ export const Navbar = () => {
           IDEAKART
         </Link>
 
-        <Input getText={showText} />
+        <Input />
 
         <Link
           style={{

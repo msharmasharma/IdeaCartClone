@@ -4,20 +4,38 @@ import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { useSelector } from "react-redux";
 export const Products = () => {
-  const user = useSelector((store) => store.user);
-  console.log(user);
-
-  const teacher = JSON.parse(localStorage.getItem("teacherName"));
+  const search = useSelector((store) => store.search);
+  const input = useSelector((store) => store.input);
+  console.log(input);
 
   const [products, setProducts] = useState([]);
+  const [inputsearch, setInputSearch] = useState([]);
 
   useEffect(() => {
+    if (search === false) {
+      getData();
+    } else {
+      searchData();
+    }
+  }, [search]);
+
+  const getData = () => {
     axios
-      .get("https://ideakartitems.herokuapp.com/products")
+      .get("https://ideakart-clone.herokuapp.com/products")
       .then(({ data }) => {
         setProducts(data);
       });
-  }, []);
+  };
+
+  const searchData = () => {
+    axios
+      .get(`https://ideakart-clone.herokuapp.com/products?name=${input}`)
+      .then(({ data }) => {
+        setInputSearch(data);
+      });
+  };
+
+  console.log(inputsearch);
 
   const Layout = styled.div`
     display: grid;
@@ -37,69 +55,155 @@ export const Products = () => {
 
   return (
     <div style={{ marginBottom: "50%" }}>
-      <P>Top Reads</P>
-      <Layout>
-        {products.map((pro) => (
-          <Link
-            style={{ textDecoration: "none" }}
-            key={pro.id}
-            to={`/products/${pro.id}`}
-          >
-            <div
-              style={{
-                border: "1px solid grey",
-                height: "550px",
-                borderRadius: "3px",
-              }}
-            >
-              <div>
-                <img
-                  style={{ width: "93%", height: "300px", marginTop: "4%" }}
-                  src={pro.image_url}
-                />
-              </div>
-              <div>
-                <p
+      {search === true ? (
+        <div>
+          <div>
+            <P>Searched Product</P>
+          </div>
+          {inputsearch.length < 1 ? (
+            <img
+              style={{ width: "300px", height: "300px", marginTop: "20px" }}
+              src="https://crocadigital.com/wp-content/uploads/2019/04/product-currently-unavailable.png"
+              alt="Product Not Available"
+            />
+          ) : (
+            <Layout>
+              {inputsearch.map((pro) => (
+                <Link
+                  style={{ textDecoration: "none" }}
+                  key={pro.id}
+                  to={`/products/${pro.id}`}
+                >
+                  <div
+                    style={{
+                      border: "1px solid grey",
+                      height: "550px",
+                      borderRadius: "3px",
+                    }}
+                  >
+                    <div>
+                      <img
+                        style={{
+                          width: "93%",
+                          height: "300px",
+                          marginTop: "4%",
+                        }}
+                        src={pro.image_url}
+                      />
+                    </div>
+                    <div>
+                      <p
+                        style={{
+                          textAlign: "left",
+                          marginLeft: "12px",
+                          color: "black",
+                        }}
+                      >
+                        {pro.name}
+                      </p>
+                      <p
+                        style={{
+                          textAlign: "left",
+                          marginLeft: "12px",
+                          color: "teal",
+                        }}
+                      >
+                        Rs. {pro.price}
+                      </p>
+                      <hr style={{ width: "90%", color: "gray" }} />
+                      <div style={{ marginTop: "20px" }}>
+                        <span style={{ color: "blue", marginRight: "5%" }}>
+                          <img
+                            src="https://img.icons8.com/material-rounded/344/shopping-cart-loaded.png"
+                            style={{ width: "15px", height: "15px" }}
+                          />{" "}
+                          View Now
+                        </span>{" "}
+                        |{" "}
+                        <span style={{ color: "blue", marginLeft: "5%" }}>
+                          <img
+                            src="https://img.icons8.com/ios-filled/344/view-details.png"
+                            style={{ width: "15px", height: "15px" }}
+                          />{" "}
+                          More Details{" "}
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                </Link>
+              ))}
+            </Layout>
+          )}
+        </div>
+      ) : (
+        <div>
+          <div>
+            <P>Top Reads</P>
+          </div>
+          <Layout>
+            {products.map((pro) => (
+              <Link
+                style={{ textDecoration: "none" }}
+                key={pro.id}
+                to={`/products/${pro.id}`}
+              >
+                <div
                   style={{
-                    textAlign: "left",
-                    marginLeft: "12px",
-                    color: "black",
+                    border: "1px solid grey",
+                    height: "550px",
+                    borderRadius: "3px",
                   }}
                 >
-                  {pro.name}
-                </p>
-                <p
-                  style={{
-                    textAlign: "left",
-                    marginLeft: "12px",
-                    color: "teal",
-                  }}
-                >
-                  Rs. {pro.price}
-                </p>
-                <hr style={{ width: "90%", color: "gray" }} />
-                <div style={{ marginTop: "20px" }}>
-                  <span style={{ color: "blue", marginRight: "5%" }}>
+                  <div>
                     <img
-                      src="https://img.icons8.com/material-rounded/344/shopping-cart-loaded.png"
-                      style={{ width: "15px", height: "15px" }}
-                    />{" "}
-                    View Now
-                  </span>{" "}
-                  |{" "}
-                  <span style={{ color: "blue", marginLeft: "5%" }}>
-                    <img
-                      src="https://img.icons8.com/ios-filled/344/view-details.png"
-                      style={{ width: "15px", height: "15px" }}
-                    />{" "}
-                    More Details{" "}
-                  </span>
+                      style={{ width: "93%", height: "300px", marginTop: "4%" }}
+                      src={pro.image_url}
+                    />
+                  </div>
+                  <div>
+                    <p
+                      style={{
+                        textAlign: "left",
+                        marginLeft: "12px",
+                        color: "black",
+                      }}
+                    >
+                      {pro.name}
+                    </p>
+                    <p
+                      style={{
+                        textAlign: "left",
+                        marginLeft: "12px",
+                        color: "teal",
+                      }}
+                    >
+                      Rs. {pro.price}
+                    </p>
+                    <hr style={{ width: "90%", color: "gray" }} />
+                    <div style={{ marginTop: "20px" }}>
+                      <span style={{ color: "blue", marginRight: "5%" }}>
+                        <img
+                          src="https://img.icons8.com/material-rounded/344/shopping-cart-loaded.png"
+                          style={{ width: "15px", height: "15px" }}
+                        />{" "}
+                        View Now
+                      </span>{" "}
+                      |{" "}
+                      <span style={{ color: "blue", marginLeft: "5%" }}>
+                        <img
+                          src="https://img.icons8.com/ios-filled/344/view-details.png"
+                          style={{ width: "15px", height: "15px" }}
+                        />{" "}
+                        More Details{" "}
+                      </span>
+                    </div>
+                  </div>
                 </div>
-              </div>
-            </div>
-          </Link>
-        ))}
-      </Layout>
+              </Link>
+            ))}
+          </Layout>
+        </div>
+      )}
     </div>
   );
 };
