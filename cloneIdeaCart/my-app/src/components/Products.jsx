@@ -24,7 +24,7 @@ export const Products = () => {
 
   const getData = () => {
     axios
-      .get("https://ideakart-clone.herokuapp.com/products")
+      .get("https://ideakart-clone.up.railway.app/products")
       .then(({ data }) => {
         setProducts(data);
       });
@@ -32,7 +32,7 @@ export const Products = () => {
 
   const searchData = () => {
     axios
-      .get(`https://ideakart-clone.herokuapp.com/products?name=${input}`)
+      .get(`https://ideakart-clone.up.railway.app/products?name=${input}`)
       .then(({ data }) => {
         setInputSearch(data);
       });
@@ -62,7 +62,7 @@ export const Products = () => {
     console.log("value1" + value1);
     console.log("value2" + value2);
     axios(
-      `https://ideakart-clone.herokuapp.com/products?price_gte=${value1}&price_lte=${value2}`,
+      `https://ideakart-clone.up.railway.app/products?price_gte=${value1}&price_lte=${value2}`,
       {
         method: "GET",
       }

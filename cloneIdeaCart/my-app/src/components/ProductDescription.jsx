@@ -50,7 +50,7 @@ export const ProductDescription = () => {
 
   useEffect(() => {
     axios
-      .get(`https://ideakart-clone.herokuapp.com/products/${id}`)
+      .get(`https://ideakart-clone.up.railway.app/products/${id}`)
       .then(({ data }) => {
         setShowData(data);
       });
