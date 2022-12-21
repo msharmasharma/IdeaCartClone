@@ -13,7 +13,7 @@ export const Contact = () => {
     background-repeat: no-repeat;
     background-size: cover;
     padding-top: 1%;
-    background-image: url(https://ideakart.com/assets/youridea-23d18c0fab7feb4d66e4c1dbc419428c71b2014ff742fc52b4006f6b65af6b67.jpg);
+    background-image: url(https://img.freepik.com/premium-photo/business-man-contact-us-customer-support-hotline-people-connect-phone-application-blue-background-check-mail-hotline-computerxaxa_36325-3475.jpg?w=2000);
   `;
   return (
     <Div>

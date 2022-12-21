@@ -12,8 +12,8 @@ export const SignIn = () => {
   const navigate = useNavigate();
 
   const [adminLogin, setAdminLogin] = useState({
+    email: "",
     password: "",
-    username: "",
   });
 
   const takeLogin = (event) => {
@@ -24,30 +24,19 @@ export const SignIn = () => {
   const loginAdmin = (event) => {
     event.preventDefault();
     axios
-      .post("https://masai-api-mocker.herokuapp.com/auth/login", adminLogin)
+      .post(
+        "https://max-fashion-clone-server.vercel.app/max-fashion/login",
+        adminLogin
+      )
       .then((res) => {
+        console.log(res);
         if (res.data.error == false) {
-          let username = adminLogin.username;
-          let token = res.data.token;
-          axios
-            .get(`https://masai-api-mocker.herokuapp.com/user/${username}`, {
-              headers: {
-                "Content-type": "application/json",
-                Authorization: `Bearer ${token}`,
-              },
-            })
-            .then((res) => {
-              localStorage.setItem(
-                "teacherName",
-                JSON.stringify(res.data.name)
-              );
-            })
-            .then(() => alert("Login Successful"))
-            .then(() => {
-              dispatch(setUser(true));
-            })
-            .then(() => navigate("/products"))
-            .then(() => dispatch(setAuth(true)));
+          let username = res.data.user.user_name;
+          localStorage.setItem("teacherName", JSON.stringify(username));
+          alert("Login Successful");
+          dispatch(setUser(true));
+          navigate("/products");
+          dispatch(setAuth(true));
         }
       })
       .catch(() => {
@@ -70,13 +59,13 @@ export const SignIn = () => {
               fontSize: "25px",
             }}
           >
-            Username
+            Email
           </label>
           <input
-            id="username"
+            id="email"
             onChange={takeLogin}
             type="text"
-            placeholder="enter username"
+            placeholder="enter email"
             style={{
               height: "35px",
               border: "1px solid black",

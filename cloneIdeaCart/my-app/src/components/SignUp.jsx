@@ -4,12 +4,9 @@ import { useNavigate } from "react-router-dom";
 
 export const SignUp = () => {
   const [register, setRegister] = useState({
-    name: "",
+    user_name: "",
     email: "",
     password: "",
-    username: "",
-    mobile: "",
-    description: "",
   });
 
   const navigate = useNavigate();
@@ -22,14 +19,18 @@ export const SignUp = () => {
   const registerTeacher = (event) => {
     event.preventDefault();
     axios
-      .post("https://masai-api-mocker.herokuapp.com/auth/register", register)
+      .post(
+        "https://max-fashion-clone-server.vercel.app/max-fashion/signup",
+        register
+      )
       .then((res) => {
         if (res.data.error == false) {
           alert("Registration Successful");
           navigate("/signin");
-        } else {
-          alert("Already Registered");
         }
+      })
+      .catch((error) => {
+        alert(error.response.data.message);
       });
   };
 
@@ -48,13 +49,13 @@ export const SignUp = () => {
               fontSize: "25px",
             }}
           >
-            Name
+            User Name
           </label>
           <input
-            id="name"
+            id="user_name"
             onChange={takeRegister}
             type="text"
-            placeholder="enter name"
+            placeholder="enter user_name"
             style={{
               height: "35px",
               border: "1px solid black",
@@ -102,48 +103,6 @@ export const SignUp = () => {
             onChange={takeRegister}
             type="password"
             placeholder="enter password"
-          />
-          <label
-            style={{
-              marginLeft: "-84%",
-              marginBottom: "-15px",
-              fontSize: "25px",
-            }}
-            htmlFor=""
-          >
-            Username
-          </label>
-          <input
-            style={{
-              height: "35px",
-              border: "1px solid black",
-              marginTop: "0px",
-            }}
-            id="username"
-            onChange={takeRegister}
-            type="text"
-            placeholder="enter username"
-          />
-          <label
-            style={{
-              marginLeft: "-88.5%",
-              marginBottom: "-15px",
-              fontSize: "25px",
-            }}
-            htmlFor=""
-          >
-            Mobile
-          </label>
-          <input
-            style={{
-              height: "35px",
-              border: "1px solid black",
-              marginTop: "0px",
-            }}
-            id="mobile"
-            onChange={takeRegister}
-            type="number"
-            placeholder="enter mobile"
           />
           <input
             style={{
