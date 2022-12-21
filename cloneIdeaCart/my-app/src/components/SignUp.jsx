@@ -44,7 +44,7 @@ export const SignUp = () => {
         >
           <label
             style={{
-              marginLeft: "-91%",
+              marginLeft: "-82%",
               marginBottom: "-15px",
               fontSize: "25px",
             }}

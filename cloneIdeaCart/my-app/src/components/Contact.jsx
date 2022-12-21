@@ -17,7 +17,9 @@ export const Contact = () => {
   `;
   return (
     <Div>
-      <p>You can contact our team by filling this form -</p>
+      <p style={{ color: "white" }}>
+        You can contact our team by filling this form -
+      </p>
       <form
         action="https://formcarry.com/s/-1oBIfFBS0t"
         method="POST"
