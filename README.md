@@ -66,7 +66,7 @@ SnapShots:
 
 Github repo link:-  https://github.com/msharmasharma/IdeaCartClone
 
-Deployed Link:-  https://ideakart-app.netlify.app/
+Deployed Link:-  https://ideakart-clone-app.netlify.app/
 
 ## Check out Blog🎥
 
